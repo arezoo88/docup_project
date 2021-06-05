@@ -1,0 +1,324 @@
+openapi: 3.0.1
+info:
+  description: "داکیومنت سرویس های داکاپ"
+  title: "داکاپ"
+  contact:
+    email: "arezoo.darvish6969@gmail.com"
+#  license:
+#    url: "127.0.0.1:8000"
+
+tags:
+  - name: login
+  - name: verify
+
+
+servers:
+  - url: 'http://127.0.0.1:8000'
+paths:
+  # user
+  /api/auth/log-in/:
+    post:
+      tags:
+        - login
+      summary: 'متد مربوط به لاگین و ثبت نام'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+
+            example:
+              username: "09212646938"
+              user_type: 0
+      responses:
+        '200':
+          description: ""
+          content:
+            application/json:
+              examples:
+                sample1:
+                  value:
+                    "success": True
+                    "created": False
+                sample2:
+                  value:
+                    "success": True
+                    "created": True
+        '403':
+          description: errors
+          content:
+            application/json:
+              examples:
+                sample1:
+                  value:
+                    "msg": '[user_name] field is required.'
+                    "code": '100'
+                sample2:
+                  value:
+                    "msg": '[user_type] field is required.'
+                    "code": '101'
+                sample3:
+                  value:
+                    "msg": '[user_name] must be mobile number.'
+                    "code": '102'
+                sample4:
+                  value:
+                    "msg": '[user_type] must be integer number.'
+                    "code": '103'
+                sample5:
+                  value:
+                    "msg": '[user_type] must be in [0,1,2].'
+                    "code": '104'
+                sample6:
+                  value:
+                    "msg": 'please select correct [user_type] that was selected previous.'
+                    "code": '615' ###ddd
+  # user
+  /api/auth/verify/:
+    post:
+      tags:
+        - verify
+      summary: 'verifyمتد مربوط به '
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+
+            example:
+              username: "09212646938"
+              user_type: 0
+      responses:
+        '200':
+          description: ""
+          content:
+            application/json:
+              examples:
+                sample1:
+                  value:
+                    "success": True
+                    "created": False
+                sample2:
+                  value:
+                    "success": True
+                    "created": True
+        '403':
+          description: errors
+          content:
+            application/json:
+              examples:
+                sample1:
+                  value:
+                    "msg": '[user_name] field is required.'
+                    "code": '100'
+                sample2:
+                  value:
+                    "msg": '[user_type] field is required.'
+                    "code": '101'
+                sample3:
+                  value:
+                    "msg": '[user_name] must be mobile number.'
+                    "code": '102'
+                sample4:
+                  value:
+                    "msg": '[user_type] must be integer number.'
+                    "code": '103'
+                sample5:
+                  value:
+                    "msg": '[user_type] must be in [0,1,2].'
+                    "code": '104'
+                sample6:
+                  value:
+                    "msg": 'please select correct [user_type] that was selected previous.'
+                    "code": '615' ###ddd
+
+components:
+  schemas:
+    strategy:
+      nine:
+        create:
+          required:
+            - p_threshold
+            - symbol_fa
+            - action_type
+            - v_threshold
+      eight_and_half:
+        create:
+          required:
+            - symbol_fa
+            - action_type
+            - v_threshold
+          type: object
+          properties:
+            symbol_fa:
+              type: string
+              description: ""
+            action_type:
+              type: string
+              description: ""
+            v_threshold:
+              type: int
+              description: ""
+
+      competition:
+        create:
+          required:
+            - p_threshold
+            - v_parted
+            - symbol_fa
+            - action_type
+            - budget
+            - v_threshold
+          type: object
+          properties:
+            p_threshold:
+              type: int
+              description: ""
+            v_parted:
+              type: int
+              description: ""
+            symbol_fa:
+              type: string
+              description: ""
+            action_type:
+              type: string
+              description: ("sell" or "buy")
+            budget:
+              type: int
+              description: "it's optional, must send budget or v_threshold to server."
+            v_threshold:
+              type: int
+              description: "it's optional, must send budget or v_threshold to server."
+      woodpecker:
+        create:
+          required:
+            - p_threshold
+            - in_queued
+            - v_parted
+            - symbol_fa
+            - action_type
+            - budget
+            - v_threshold
+          type: object
+          properties:
+            p_threshold:
+              type: int
+              description: ""
+            in_queued:
+              type: bool
+              description: ""
+            v_parted:
+              type: int
+              description: ""
+            symbol_fa:
+              type: string
+              description: ""
+            action_type:
+              type: string
+              description: ("sell" or "buy")
+            budget:
+              type: int
+              description: "it's optional, must send budget or v_threshold to server."
+            v_threshold:
+              type: int
+              description: "it's optional, must send budget or v_threshold to server."
+      trader:
+        create:
+          required:
+            - p_threshold
+            - in_queued
+            - v_parted
+            - symbol_fa
+            - action_type
+            - budget
+            - v_threshold
+          type: object
+          properties:
+            p_threshold:
+              type: int
+              description: ""
+            in_queued:
+              type: bool
+              description: ""
+            v_parted:
+              type: int
+              description: ""
+            symbol_fa:
+              type: string
+              description: ""
+            action_type:
+              type: string
+              description: ("sell" or "buy")
+            budget:
+              type: int
+              description: "it's optional, must send budget or v_threshold to server."
+            v_threshold:
+              type: int
+              description: "it's optional, must send budget or v_threshold to server."
+    user:
+      password:
+        required:
+          - old_password
+          - new_password
+        type: object
+        properties:
+          old_password:
+            type: string
+            description: ""
+          new_password:
+            type: file
+            description: ""
+    order:
+      create:
+        required:
+          - type
+          - strategy
+        type: object
+        properties:
+          type:
+            type: string
+            description: ""
+          strategy:
+            type: file
+            description: ""
+
+
+  responses:
+    user_info:
+      detail:
+        type: string
+        description: ""
+      data:
+        items:
+          $ref: '#/components/responses/user_info_item'
+    user_info_item:
+      detail:
+        type: string
+        description: ""
+    layer:
+      create:
+        land_id:
+          type: string
+          description: ""
+        file:
+          file:
+            type: string
+            description: file ur;
+        type:
+          type: string
+          description: ""
+        date:
+          type: string
+          description: ""
+
+#  securitySchemes:
+#    Token:
+#      type: apiKey
+#      description: |-
+#        For authorization you must use Token in header
+#
+#
+#         structure : (Bearer f429b7408bce9223746378929fabjknfsdgi3422)
+#
+#      name: Authorization
+#      in: header

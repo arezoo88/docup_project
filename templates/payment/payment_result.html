@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>payment result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="modal-dialog modal-notify modal-success" role="document">
+    <!--Content-->
+    <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header text-lg text-center">
+            <p class="heading lead   right badge badge-primary text-wrap h1 font-weight-bold"
+               style="width: 20rem; font-size: 20px ;">نتیجه ی پرداخت</p>
+
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+
+            <div class="text-right text-wrap">
+
+                <div id="content">
+                    <h1>{{ result }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+            <a type="button" href={{app_url}} class="btn btn-success">بازگشت به برنامه <i
+                    class="far fa-gem ml-1 text-white"></i></a>
+            {#         <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">نه متشکرم</a>#}
+        </div>
+    </div>
+    <!--/.Content-->
+
+</div>
+
+
+</body>
+</html>
